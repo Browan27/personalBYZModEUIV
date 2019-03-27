@@ -1,0 +1,33 @@
+
+##from Byzantine Mod##
+
+war_goal_roman_rivalry = {
+	type = superiority
+
+	attacker = 	{
+		badboy_factor = 0
+		prestige_factor = 3
+		peace_cost_factor = 0.5
+
+		peace_options = {
+            po_gold
+            po_concede_defeat
+            po_revoke_cores
+        }
+	}
+	
+	defender = 	{
+		badboy_factor = 0
+		prestige_factor = 3
+		peace_cost_factor = 0.5
+
+		peace_options = {
+            po_gold
+            po_concede_defeat
+            po_revoke_cores
+        }
+	}
+
+	war_name = ROMAN_RIVALRY_WAR_NAME
+}
+		

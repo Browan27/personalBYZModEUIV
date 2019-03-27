@@ -1,0 +1,439 @@
+namespace = roman_rivalry
+
+# Conflict and Competition between Byz and HRE
+
+# Roman rivalry sparks diplomatic incident; HRE is annoyed with you
+country_event = {
+	id = roman_rivalry.1
+	title = "roman_rivalry.EVTNAME1"
+	desc = "roman_rivalry.EVTDESC1"
+	picture = DIPLOMACY_eventPicture
+
+	trigger = {
+		tag = ROM
+		has_country_flag = roman_diplo_rivalry
+		NOT = { has_country_modifier = true_roman_emperor }
+	}
+
+	mean_time_to_happen = {
+		months = 12
+	}
+
+	option = {
+		name = "roman_rivalry.EVTOPTA1"
+		clr_country_flag = roman_diplo_rivalry
+		set_country_flag = roman_diplo_hostility
+		add_prestige = 20
+        add_opinion = {
+			who = emperor
+			modifier = roman_rival
+		}
+		every_country = {
+			limit = {
+				is_emperor = yes
+			}
+            add_opinion = {
+				who = ROOT
+				modifier = roman_rival
+			}
+		}
+	}
+
+	option = {
+		name = "roman_rivalry.EVTOPTB1"
+		clr_country_flag = roman_diplo_rivalry
+		add_prestige = -20
+	}
+}
+
+# Roman diplomatic rivalry sparks hostile confrontation; open threat of war with HRE
+country_event = {
+	id = roman_rivalry.2
+	title = "roman_rivalry.EVTNAME2"
+	desc = "roman_rivalry.EVTDESC2"
+	picture = ACCUSATION_eventPicture
+
+	trigger = {
+		tag = ROM
+		has_country_flag = roman_diplo_hostility
+		NOT = { has_country_modifier = true_roman_emperor }
+	}
+
+	mean_time_to_happen = {
+		months = 12
+	}
+
+	option = {
+		name = "roman_rivalry.EVTOPTA2"
+		clr_country_flag = roman_diplo_hostility
+		add_prestige = 100
+		add_country_modifier = {
+			name = "roman_rivalry"
+			duration = -1
+		}
+		add_casus_belli = {	
+			target = emperor
+			type = cb_roman_rivalry
+			months = 600
+		}
+		every_country = {
+			limit = {
+				is_emperor = yes
+			}
+			add_prestige = 100
+			add_country_modifier = {
+				name = "roman_rivalry"
+				duration = -1
+			}
+			add_casus_belli = {	
+				target = ROOT
+				type = cb_roman_rivalry
+				months = 600
+			}
+		}
+	}
+
+	option = {
+		name = "roman_rivalry.EVTOPTB2"
+		clr_country_flag = roman_diplo_hostility
+		add_prestige = -30
+        remove_opinion = {
+			who = emperor
+			modifier = roman_rival
+		}
+		every_country = {
+			limit = {
+				is_emperor = yes
+			}
+			remove_opinion = {
+				who = ROOT
+				modifier = roman_rival
+			}
+		}
+	}
+}
+
+# Byzantium wins!
+country_event = {
+	id = roman_rivalry.3
+	title = "roman_rivalry.EVTNAME3"
+	desc = "roman_rivalry.EVTDESC3"
+	picture = HRE_eventPicture
+
+	trigger = {
+		tag = ROM
+		has_country_modifier = roman_rivalry
+		emperor = {
+			NOT = { prestige = 1 }
+		}
+	}
+
+	mean_time_to_happen = {
+		days = 7
+	}
+
+	option = {
+		name = "roman_rivalry.EVTOPTA3"
+		remove_country_modifier = roman_rivalry
+		add_country_modifier = {
+			name = "true_roman_emperor"
+			duration = -1
+		}
+		add_prestige = 100
+		remove_casus_belli = {	
+			target = emperor
+			type = cb_roman_rivalry
+		}
+		remove_opinion = {
+			who = emperor
+			modifier = roman_rival
+		}
+        118 = {
+            set_in_empire = yes
+        }
+		every_country = {
+			limit = {
+				is_emperor = yes
+			}
+            add_prestige = -100
+            add_legitimacy = -50
+			remove_country_modifier = roman_rivalry
+			remove_casus_belli = {	
+				target = ROOT
+				type = cb_roman_rivalry
+			}
+			remove_opinion = {
+				who = ROOT
+				modifier = roman_rival
+			}
+		}
+        set_hre_religion = orthodox
+        set_hre_religion_locked = yes
+        add_imperial_influence = 100
+        every_country = {
+			limit = {
+				is_part_of_hre = yes
+				is_emperor = no
+				num_of_cities = 1
+                NOT = { tag = ROM }
+                NOT = { tag = PAP }
+			}
+			country_event = { id = roman_rivalry.5 }
+		}
+	}
+	
+	option = {
+		name = "roman_rivalry.EVTOPTB3"
+		remove_country_modifier = roman_rivalry
+		add_country_modifier = {
+			name = "true_roman_emperor"
+			duration = -1
+		}
+		add_prestige = 100
+		remove_casus_belli = {	
+			target = emperor
+			type = cb_roman_rivalry
+		}
+		remove_opinion = {
+			who = emperor
+			modifier = roman_rival
+		}
+		every_country = {
+			limit = {
+				is_emperor = yes
+			}
+            add_prestige = -100
+            add_legitimacy = -50
+			remove_country_modifier = roman_rivalry
+			remove_casus_belli = {	
+				target = ROOT
+				type = cb_roman_rivalry
+			}
+			remove_opinion = {
+				who = ROOT
+				modifier = roman_rival
+			}
+		}
+        dismantle_hre = yes
+	}
+}
+
+# HRE wins!
+country_event = {
+	id = roman_rivalry.4
+	title = "roman_rivalry.EVTNAME4"
+	desc = "roman_rivalry.EVTDESC4"
+	picture = HRE_eventPicture
+
+	trigger = {
+		tag = ROM
+		has_country_modifier = roman_rivalry
+		NOT = { prestige = 1 }
+	}
+
+	mean_time_to_happen = {
+		days = 7
+	}
+
+	option = {
+		name = "roman_rivalry.EVTOPTA4"
+		remove_country_modifier = roman_rivalry
+		remove_casus_belli = {	
+			target = emperor
+			type = cb_roman_rivalry
+		}
+		remove_opinion = {
+			who = emperor
+			modifier = roman_rival
+		}
+		add_legitimacy = -20
+		every_country = {
+			limit = {
+				is_emperor = yes
+			}
+			remove_country_modifier = roman_rivalry
+			add_imperial_influence = 100
+			add_prestige = 50
+			remove_casus_belli = {	
+				target = ROOT
+				type = cb_roman_rivalry
+			}
+			remove_opinion = {
+				who = ROOT
+				modifier = roman_rival
+			}
+		}
+	}
+}
+
+# Princes can convert
+country_event = {
+	id = roman_rivalry.5
+	title = "roman_rivalry.EVTNAME5"
+	desc = "roman_rivalry.EVTDESC5"
+	picture = HRE_eventPicture
+
+	major = yes
+	is_triggered_only = yes
+
+	option = {
+        name = "roman_rivalry.EVTOPTA5"
+		add_opinion = {
+			who = ROM
+			modifier = accepted_orthodoxy_rom
+		}
+        ROM = {
+            add_opinion = {
+                who = ROOT
+                modifier = accepted_orthodoxy_rom
+            }
+        }
+        add_opinion = {
+			who = PAP
+			modifier = accepted_orthodoxy_pap
+		}
+        PAP = {
+            add_opinion = {
+                who = ROOT
+                modifier = accepted_orthodoxy_pap
+            }
+        }
+        change_religion = orthodox
+        
+        remove_country_modifier = counter_reformation
+		remove_country_modifier = the_statue_in_restraint_of_appeals
+		remove_country_modifier = bavarian_jesuits
+		remove_country_modifier = the_societas_jesu
+		remove_country_modifier = the_declaration_of_indulgence
+		remove_country_modifier = de_heretico_comburendo
+		remove_country_modifier = the_conventicle_act
+        
+        add_country_modifier = {
+            name = "conversion_zeal"
+			duration = 3650
+		}
+        
+        hidden_effect = {
+					random_owned_province = {
+						limit = {
+							is_in_capital_area = yes
+						}
+						change_religion = orthodox
+					}
+				}
+        
+        ai_chance = {
+			factor = 90
+            modifier = {
+				factor = 0.2
+				has_opinion = { who = PAP value = 100 }
+			}
+            modifier = {
+				factor = 0
+				NOT = { has_opinion = { who = ROM value = 0 } }
+			}
+		}
+	}
+    
+    option = {
+		name = "roman_rivalry.EVTOPTB5"
+		add_opinion = {
+			who = ROM
+			modifier = rejected_orthodoxy_rom
+		}
+        ROM = {
+            add_opinion = {
+                who = ROOT
+                modifier = rejected_orthodoxy_rom
+            }
+        }
+        add_opinion = {
+			who = PAP
+			modifier = rejected_orthodoxy_pap
+		}
+        PAP = {
+            add_opinion = {
+                who = ROOT
+                modifier = rejected_orthodoxy_pap
+            }
+        }
+        add_prestige = 5
+        ai_chance = {
+			factor = 10
+            modifier = {
+				factor = 0.2
+				has_opinion = { who = ROM value = 50 }
+			}
+            modifier = {
+				factor = 0.2
+				NOT = { has_opinion = { who = PAP value = 50 } }
+			}
+            modifier = {
+				factor = 0
+				NOT = { has_opinion = { who = PAP value = 0 } }
+			}
+            modifier = {
+				factor = 0
+				AND = {
+                    118 = { religion = orthodox }
+                    151 = { religion = orthodox }
+                    377 = { religion = orthodox }
+                    2313 = { religion = orthodox }
+                    379 = { religion = orthodox }
+                    358 = { religion = orthodox }
+                }
+			}
+		}
+	}
+}
+
+# Byzantine Culture
+country_event = {
+	id = roman_rivalry.6
+	title = "roman_rivalry.EVTNAME6"
+	desc = "roman_rivalry.EVTDESC6"
+	picture = BYZANTINE_EAGLE_eventPicture
+    
+    fire_only_once = yes
+
+	trigger = {
+		tag = ROM
+		has_country_flag = BYZ_restored_rome
+	}
+
+	mean_time_to_happen = {
+		days = 7
+	}
+
+	option = {
+		name = "roman_rivalry.EVTOPTA6"
+		add_country_modifier = {
+			name = "byzantine_roots"
+			duration = -1
+		}
+		add_accepted_culture = greek
+        add_accepted_culture = pontic_greek
+        add_accepted_culture = goths
+        add_accepted_culture = croatian
+        add_accepted_culture = serbian
+        add_accepted_culture = bulgarian
+        add_accepted_culture = albanian
+	}
+}
+
+# Rome inherits imperial states
+country_event = {
+	id = roman_rivalry.7
+	title = "EVTNAME9076"
+	desc = "EVTDESC9076"
+	picture = HRE_eventPicture
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTA9076"
+        ROM = {
+			inherit = ROOT
+		}
+	}
+}

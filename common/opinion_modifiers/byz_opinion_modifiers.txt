@@ -1,0 +1,38 @@
+###########################
+# from Byzantine Mod
+###########################
+
+roman_rival = {
+	opinion = -100
+	yearly_decay = 1
+}
+
+accepted_orthodoxy_rom = {
+    opinion = 100
+    yearly_decay = 1
+}
+
+accepted_orthodoxy_hab = {
+    opinion = -50
+    yearly_decay = 1
+}
+
+accepted_orthodoxy_pap = {
+    opinion = -100
+    yearly_decay = 1
+}
+
+rejected_orthodoxy_rom = {
+    opinion = -50
+    yearly_decay = 1
+}
+
+rejected_orthodoxy_hab = {
+    opinion = 25
+    yearly_decay = 1
+}
+
+rejected_orthodoxy_pap = {
+    opinion = 50
+    yearly_decay = 1
+}

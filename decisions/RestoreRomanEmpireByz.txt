@@ -1,0 +1,307 @@
+country_decisions = {
+
+	restore_roman_empire_byz = {
+		major = yes
+		potential = {
+			normal_or_historical_nations = yes
+            NOT = { has_country_flag = BYZ_restored_rome }
+			tag = BYZ
+			NOT = { exists = ROM }
+			OR = {
+				religion_group = christian
+				religion_group = pagan
+			}
+		}
+		provinces_to_highlight = {
+			OR = {
+				area = apulia_area
+				area = naples_area
+				area = thrace_area
+				area = northern_greece_area
+				area = morea_area
+				area = hudavendigar_area
+				area = aydin_area
+				area = aleppo_area
+				area = syria_area
+				area = palestine_area
+				province_id = 358
+			}
+			NOT = { owned_by = ROOT }
+		}
+		allow = {
+            apulia_area = {
+				type = all
+				owned_by = ROOT
+			}
+			naples_area = {
+				type = all
+				owned_by = ROOT
+			}
+            thrace_area = {
+				type = all
+				owned_by = ROOT
+			}
+			northern_greece_area = {
+				type = all
+				owned_by = ROOT
+			}
+            morea_area = {
+				type = all
+				owned_by = ROOT
+			}
+			hudavendigar_area = {
+				type = all
+				owned_by = ROOT
+			}
+            aydin_area = {
+				type = all
+				owned_by = ROOT
+			}
+            aleppo_area = {
+				type = all
+				owned_by = ROOT
+			}
+            syria_area = {
+				type = all
+				owned_by = ROOT
+			}
+            palestine_area = {
+				type = all
+				owned_by = ROOT
+			}
+			owns = 358 # Alexandria
+			is_at_war = no
+			is_free_or_tributary_trigger = yes
+			is_nomad = no
+		}
+		effect = {
+            118 = {
+				move_capital_effect = yes
+			}
+			change_tag = ROM
+			custom_tooltip = roman_culture_provinces_tooltip
+			hidden_effect = {
+				every_owned_province = {
+					limit = {
+						has_owner_culture = yes
+					}
+					change_culture = roman
+				}
+			}
+			change_primary_culture = roman
+			set_ruler_culture = roman
+			set_heir_culture = roman
+			custom_tooltip = restore_roman_empire_tt
+			hidden_effect = {
+				every_owned_province = {
+					limit = {
+						is_part_of_hre = yes
+					}
+					set_in_empire = no
+				}
+			}
+			set_government_rank = 3
+			add_prestige = 100
+			add_core = 118 # Rome
+			#if = {
+			#	limit = {
+			#		is_part_of_hre = yes
+			#		is_elector = no
+			#	}
+			#	every_owned_province = {
+			#		limit = {
+			#			is_part_of_hre = yes
+			#		}
+			#		set_in_empire = no
+			#	}
+			#}
+			if = {
+				limit = { has_custom_ideas = no }
+				country_event = { id = ideagroups.1 } #Swap Ideas
+			}
+            set_country_flag = BYZ_restored_rome
+			add_country_modifier = {
+				name = "centralization_modifier"
+				duration = 7300
+			}
+            add_adm_power = 250
+            add_dip_power = 250
+            add_mil_power = 250
+            change_technology_group = western
+            change_unit_type = new_roman
+            
+            118 = {
+                add_base_tax = 4
+                add_base_production = 4
+                add_base_manpower = 3
+                change_culture = roman
+                change_religion = orthodox
+            }
+            
+            italy_region = {
+				limit = {
+					NOT = { owned_by = ROOT }
+				}
+				add_permanent_claim = ROM
+			}
+            france_region = {
+				limit = {
+					NOT = { owned_by = ROOT }
+				}
+				add_permanent_claim = ROM
+			}
+			iberia_region = {
+				limit = {
+					NOT = { owned_by = ROOT }
+				}
+				add_permanent_claim = ROM
+			}
+            balkan_region = {
+				limit = {
+					NOT = { owned_by = ROOT }
+				}
+				add_permanent_claim = ROM
+			}
+			carpathia_region = {
+				limit = {
+					NOT = { owned_by = ROOT }
+				}
+				add_permanent_claim = ROM
+			}
+			caucasia_region = {
+				limit = {
+					NOT = { owned_by = ROOT }
+				}
+				add_permanent_claim = ROM
+			}
+            anatolia_region = {
+				limit = {
+					NOT = { owned_by = ROOT }
+				}
+				add_permanent_claim = ROM
+			}
+            mashriq_region = {
+				limit = {
+					NOT = { owned_by = ROOT }
+				}
+				add_permanent_claim = ROM
+			}
+            maghreb_region = {
+				limit = {
+					NOT = { owned_by = ROOT }
+				}
+				add_permanent_claim = ROM
+			}
+            egypt_region = {
+				limit = {
+					NOT = { owned_by = ROOT }
+				}
+				add_permanent_claim = ROM
+			}
+			crimea_region = {
+				limit = {
+					NOT = { owned_by = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+            wessex_area = {
+				limit = {
+					NOT = { owned_by = ROOT }
+				}
+				add_permanent_claim = ROM
+			}
+            home_counties_area = {
+				limit = {
+					NOT = { owned_by = ROOT }
+				}
+				add_permanent_claim = ROM
+			}
+            east_anglia_area = {
+				limit = {
+					NOT = { owned_by = ROOT }
+				}
+				add_permanent_claim = ROM
+			}
+            east_midlands_area = {
+				limit = {
+					NOT = { owned_by = ROOT }
+				}
+				add_permanent_claim = ROM
+			}
+			west_midlands_area = {
+				limit = {
+					NOT = { owned_by = ROOT }
+				}
+				add_permanent_claim = ROM
+			}
+            wales_area = {
+				limit = {
+					NOT = { owned_by = ROOT }
+				}
+				add_permanent_claim = ROM
+			}
+			yorkshire_area = {
+				limit = {
+					NOT = { owned_by = ROOT }
+				}
+				add_permanent_claim = ROM
+			}
+			add_permanent_claim = 246
+			add_permanent_claim = 247
+		}
+		ai_will_do = {
+			factor = 1
+		}
+	}
+    
+    rome_government = {
+		major = yes
+		potential = {
+			OR = {
+                tag = BYZ
+                tag = ROM
+            }
+            NOT = { government = imperial_government }
+		}
+		allow = {
+			OR = {
+                tag = BYZ
+                tag = ROM
+            }
+            NOT = { government = imperial_government }
+		}
+		effect = {
+			change_government = imperial_government
+            add_adm_power = -100
+		}
+		ai_will_do = {
+			factor = 1
+		}
+	}
+    
+    begin_roman_rivalry = {
+		major = yes
+		potential = {
+			tag = ROM
+            owns = 118
+			NOT = { exists = HRE }
+			NOT = { has_country_flag = roman_diplo_rivalry }
+            NOT = { has_country_flag = roman_diplo_hostility }
+            NOT = { has_country_modifier = roman_rivalry }
+			NOT = { has_country_modifier = true_roman_emperor }
+		}
+
+		allow = {
+			num_of_cities = 50
+			is_at_war = no
+			prestige = 50
+			dip = 2
+			dip_power = 50
+		}
+
+		effect = {
+			set_country_flag = roman_diplo_rivalry
+			add_dip_power = -50
+		}
+	}
+}

@@ -1,0 +1,67 @@
+imperial_vassal = {
+	copy_from = vassal
+	
+	# Graphics:
+	sprite = GFX_icon_march
+	diplomacy_overlord_sprite = GFX_diplomacy_leadmarch
+	diplomacy_subject_sprite = GFX_diplomacy_weakmarch
+
+	# Properties:
+	military_focus = 1.5
+	base_liberty_desire = -40.0
+    transfer_trade_if_merchant_republic = yes
+	allows_taking_land_without_independence = yes
+	can_be_annexed = yes
+	has_power_projection = yes
+	overlord_protects_external = yes
+    takes_diplo_slot = no
+	gets_help_with_rebels = yes
+	separatists_become_subjects = yes
+    liberty_desire_development_ratio = 0.0
+	liberty_desire_same_dynasty = -5.0
+	pays_overlord = 1.0
+	forcelimit_bonus = 2.0
+
+	relative_power_class = 1
+    
+    # Subject Interactions:
+	scutage = yes
+	place_relative_on_throne = yes
+	divert_trade = yes
+    fortify_march = yes
+	seize_territory = yes
+    embargo_rivals = yes
+	support_loyalists = yes
+	subsidize_armies = yes
+	send_officers = yes
+	divert_trade= yes
+	knowledge_sharing = yes
+	return_land = yes
+    
+    restoration_cb = cb_disloyal_vassal
+    
+    can_fight = {
+		independent_nations = yes
+        other_overlord = all
+	}
+	can_rival = {
+		independent_nations = yes
+        other_overlord = all
+	}
+	can_ally = {
+		same_overlord = imperial_vassal
+	}
+    can_marry = {
+		same_overlord = imperial_vassal
+	}
+	
+	# Modifiers:
+	modifier_overlord = clear #We don't want to duplicate the ones inherited from vassal
+	modifier_subject = clear #Ditto
+	modifier_overlord = {
+		modifier = union_subject
+	}
+	modifier_subject = {
+		modifier = imperial_vassal_bonus
+	}
+}

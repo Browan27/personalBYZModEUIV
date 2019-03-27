@@ -1,0 +1,234 @@
+namespace = byz_events_per
+
+normal_or_historical_nations = yes
+
+country_event = {
+	id = byz_events_per.1
+	title = "byz_events_per.1.t"
+	desc = "byz_events_per.1.d"
+	
+    picture = ST_PETERS_CHURCH_eventPicture
+	
+	fire_only_once = yes
+	
+	trigger = {
+		tag = BYZ
+		has_dlc = "Purple Phoenix"
+	}
+	
+	mean_time_to_happen = {
+		days = 1
+	}
+	
+	option = {
+		name = "byz_events_per.1.a"
+		add_treasury = 1500
+        add_manpower = 15
+        add_sailors = 1500
+        add_stability = 3
+        add_legitimacy = 15
+        add_prestige = 25
+        add_country_modifier = {
+			name = "mercury_swiftness"
+			duration = -1
+		}
+        define_general = {
+            name = "Roma Redemptor"
+            fire = 5
+            shock = 6
+            manuever = 6
+            siege = 1
+        }
+        define_general = {
+            name = "Obsidio Dominus"
+            fire = 3
+            shock = 3
+            manuever = 1
+            siege = 6
+        }
+        define_admiral = {
+            name = "Navis Praedo"
+            shock = 6
+            fire = 6
+            manuever = 5
+        }
+        balkan_region = {
+            limit = {
+				NOT = { owned_by = ROOT }
+			}
+			add_core = BYZ
+		}
+		anatolia_region = {
+			limit = {
+				NOT = { owned_by = ROOT }
+			}
+            add_core = BYZ
+		}
+		add_core = 130
+		add_core = 285
+		add_core = 2410
+		add_core = 2447
+		
+		anatolia_region = {
+            limit = {
+				OR = {
+					owned_by = CND
+					owned_by = KAR
+					owned_by = RAM
+				}
+			}
+			add_core = TUR
+		}
+	}
+}
+
+country_event = {
+	id = byz_events_per.2
+	
+	title = "byz_events_per.2.t"
+	desc = "byz_events_per.2.d"
+	
+	picture = ORTHODOX_eventPicture
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "byz_events_per.2.a"
+		every_owned_province = {
+			limit = {
+				area = aydin_area
+			}
+			change_culture = greek
+			change_religion = orthodox
+		}
+		add_accepted_culture = turkish
+	}
+	
+	option = {
+		name = "byz_events_per.2.b"
+		every_owned_province = {
+			limit = {
+				OR = {
+					area = aydin_area
+					area = germiyan_area
+					area = ankara_area
+					area = cukurova_area
+					area = kastamonu_area
+				}
+			}
+			change_culture = greek
+			change_religion = orthodox
+		}
+		every_owned_province = {
+			limit = {
+				OR = {
+					area = karaman_area
+					area = rum_area
+					area = dulkadir_area
+				}
+			}
+			add_loot_from_rich_province_general_effect = {
+				LOOTER = owner #BYZ
+			}
+			change_religion = orthodox
+			add_province_modifier = {
+				name = forced_conversion
+				duration = 730
+			}
+			add_province_modifier = {
+				name = spa_rb_culture_shift
+				duration = -1
+			}
+		}
+	}
+}
+
+country_event = {
+	id = byz_events_per.18
+	
+	title = "byz_events_per.18.t"
+	desc = "byz_events_per.18.d"
+	
+	picture = ORTHODOX_eventPicture
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "byz_events_per.18.a"
+		151 = {
+			add_reform_center = orthodox
+		}
+	}
+}
+
+country_event = {
+	id = byz_events_per.19
+	
+	title = "byz_events_per.19.t"
+	desc = "byz_events_per.19.d"
+	
+	picture = ORTHODOX_eventPicture
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "byz_events_per.19.a"
+		2321 = {
+			add_reform_center = orthodox
+		}
+	}
+}
+
+country_event = {
+	id = byz_events_per.20
+	
+	title = "byz_events_per.20.t"
+	desc = "byz_events_per.20.d"
+	
+	picture = ORTHODOX_eventPicture
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "byz_events_per.20.a"
+		379 = {
+			add_reform_center = orthodox
+		}
+	}
+}
+
+country_event = {
+	id = byz_events_per.21
+	
+	title = "byz_events_per.21.t"
+	desc = "byz_events_per.21.d"
+	
+	picture = ORTHODOX_eventPicture
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "byz_events_per.21.a"
+		358 = {
+			add_reform_center = orthodox
+		}
+	}
+}
+
+country_event = {
+	id = byz_events_per.22
+	
+	title = "byz_events_per.22.t"
+	desc = "byz_events_per.22.d"
+	
+	picture = ORTHODOX_eventPicture
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "byz_events_per.22.a"
+		118 = {
+			add_reform_center = orthodox
+		}
+	}
+}

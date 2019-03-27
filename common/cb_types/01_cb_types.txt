@@ -1,0 +1,5 @@
+cb_roman_rivalry = {
+
+	is_triggered_only = yes
+	war_goal = war_goal_roman_rivalry
+}

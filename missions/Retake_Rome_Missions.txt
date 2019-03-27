@@ -1,0 +1,1296 @@
+rom_slot_one = {
+	slot = 1
+	generic = no
+	ai = yes
+	potential_on_load = {
+		has_dlc = "Purple Phoenix"
+	}
+	potential = {
+		OR = {
+            tag = BYZ
+            AND = {
+                tag = ROM
+                has_country_flag = BYZ_restored_rome
+            }
+        }
+		has_dlc = "Purple Phoenix"
+	}
+	has_country_shield = yes
+	
+	rom_third_rome = {
+		icon = mission_alliances
+		required_missions = { }
+		position = 7
+		
+		trigger = { 
+			if = {
+				limit = {
+					exists = MOS
+				}
+				marriage_with = MOS
+			}
+			else = {
+				AND = {
+					owns = 118
+					owns = 151
+					owns = 358
+					owns = 379
+					owns = 2313
+				}
+			}
+		}
+	
+		effect = {
+			poland_region = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { owned_by = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			ruthenia_region = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { owned_by = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			russia_region = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { owned_by = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			lithuania_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { owned_by = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			if = {
+				limit = {
+					exists = MOS
+					is_subject = no
+					MOS = {
+						is_subject = no
+					}
+				}
+				add_casus_belli = {
+					type = cb_restore_personal_union
+					months = 300
+					target = MOS
+				}
+			}
+		}
+	}
+	
+	rom_conquer_commonwealth = {
+		icon = mission_conquer_5_states
+		required_missions = { rom_third_rome }
+		
+		provinces_to_highlight = {
+			OR = {
+				area = mazovia_area
+				area = lithuania_area
+				area = moscow_area
+			}
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+		}
+		
+		trigger = {
+			mazovia_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			lithuania_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			moscow_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		effect = {
+			baltic_region = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { owned_by = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			scandinavia_region = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { owned_by = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+		}
+	}
+	
+	rom_reconquer_italy = {
+		icon = mission_pf_soldier
+		required_missions = { }
+		position = 9
+		
+		provinces_to_highlight = {
+			region = italy_region
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+		}
+		
+		trigger = {
+			italy_region = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		effect = {
+			south_german_region = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { owned_by = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+		}
+	}
+	
+	rom_reconquer_france = {
+		icon = mission_pf_soldier
+		required_missions = { }
+		position = 10
+		
+		provinces_to_highlight = {
+			region = france_region
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+		}
+		
+		trigger = {
+			france_region = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		effect = {
+			north_german_region = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { owned_by = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			low_countries_region = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { owned_by = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+		}
+	}
+	
+	rom_reconquer_egypt = {
+		icon = mission_pf_soldier
+		required_missions = { }
+		position = 11
+		
+		provinces_to_highlight = {
+			region = egypt_region
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+		}
+		
+		trigger = {
+			egypt_region = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		effect = {
+			arabia_region = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { owned_by = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			horn_of_africa_region = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { owned_by = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+		}
+	}
+	
+	rom_conquer_horn_of_africa = {
+		icon = mission_pf_soldier
+		required_missions = { rom_reconquer_egypt }
+		
+		provinces_to_highlight = {
+			region = horn_of_africa_region
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+		}
+		
+		trigger = {
+			horn_of_africa_region = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		effect = {
+			east_africa_region = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { owned_by = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+		}
+	}
+}
+
+rom_slot_two = {
+	slot = 2
+	generic = no
+	ai = yes
+	potential_on_load = {
+		has_dlc = "Purple Phoenix"
+	}
+	potential = {
+		OR = {
+            tag = BYZ
+            AND = {
+                tag = ROM
+                has_country_flag = BYZ_restored_rome
+            }
+        }
+		has_dlc = "Purple Phoenix"
+	}
+	has_country_shield = yes
+	
+	rom_reconquer_spain = {
+		icon = mission_pf_soldier
+		required_missions = { }
+		position = 9
+		
+		provinces_to_highlight = {
+			region = iberia_region
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+		}
+		
+		trigger = {
+			iberia_region = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		effect = {
+			guinea_region = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { owned_by = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+		}
+	}
+	
+	rom_reconquer_england = {
+		icon = mission_pf_soldier
+		required_missions = { }
+		position = 10
+		
+		provinces_to_highlight = {
+			OR = {
+				area = wessex_area
+				area = home_counties_area
+				area = east_anglia_area
+				area = east_midlands_area
+				area = west_midlands_area
+				area = wales_area
+				area = yorkshire_area
+			}
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+		}
+		
+		trigger = {
+			wessex_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			home_counties_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			east_anglia_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			east_midlands_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			west_midlands_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			wales_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			yorkshire_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		effect = {
+			british_isles_region = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { owned_by = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+		}
+	}
+	
+	rom_reconquer_maghreb = {
+		icon = mission_pf_soldier
+		required_missions = { }
+		position = 11
+		
+		provinces_to_highlight = {
+			region = maghreb_region
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+		}
+		
+		trigger = {
+			maghreb_region = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		effect = {
+			sahel_region = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { owned_by = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+		}
+	}
+	
+	rom_conquer_arabia = {
+		icon = mission_pf_soldier
+		required_missions = { rom_reconquer_egypt }
+		position = 12
+		
+		provinces_to_highlight = {
+			region = arabia_region
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+		}
+		
+		trigger = {
+			arabia_region = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		effect = {
+			mashriq_region = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { owned_by = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			persia_region = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { owned_by = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			khorasan_region = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { owned_by = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+		}
+	}
+}
+
+rom_slot_three = {
+	slot = 3
+	generic = no
+	ai = yes
+	potential_on_load = {
+		has_dlc = "Purple Phoenix"
+	}
+	potential = {
+		OR = {
+            tag = BYZ
+            AND = {
+                tag = ROM
+                has_country_flag = BYZ_restored_rome
+            }
+        }
+		has_dlc = "Purple Phoenix"
+	}
+	has_country_shield = yes
+	
+	rom_discover_america = {
+		icon = mission_establish_high_seas_navy
+		required_missions = { }
+		position = 9
+		
+		trigger = {
+			custom_trigger_tooltip = {
+				tooltip = miss_discover_eastern_america
+				colonial_eastern_america = { has_discovered = ROOT }
+			}
+			custom_trigger_tooltip = {
+				tooltip = miss_discover_caribbean
+				colonial_the_carribean = { has_discovered = ROOT }
+			}
+		}
+		
+		effect = {
+			add_country_modifier = {
+				name = "the_unknown_frontier"
+				duration = 5475
+			}
+			add_dip_power = 200
+		}
+	
+	}
+	
+	rom_north_america = {
+		icon = mission_colonial
+		required_missions = { rom_discover_america }
+		completed_by = 1610.1.1
+		
+		provinces_to_highlight = {
+			colonial_region = colonial_eastern_america
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+			has_discovered = ROOT
+		}
+		
+		trigger = { 
+			custom_trigger_tooltip = {
+				tooltip = miss_colonize_eastern_america
+				num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
+					value = 1
+					colonial_region = colonial_eastern_america
+					is_city = yes
+				}
+			}
+		}
+	
+		effect = {
+			add_country_modifier = {
+				name = "colonial_enthusiasm"
+				duration = 7300
+			}
+			create_conquistador = 80
+		}
+	}
+	
+	rom_thirteen_colonies = {
+		icon = mission_rb_the_thirteen_colonies
+		required_missions = { rom_north_america }
+		
+		provinces_to_highlight = {
+			colonial_region = colonial_eastern_america
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+			has_discovered = ROOT
+		}
+		
+		trigger = {
+			custom_trigger_tooltip = {
+				tooltip = eng_rb_own_thirteen_colonies.tooltip
+				num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
+					value = 15
+					colonial_region = colonial_eastern_america
+					is_city = yes
+				}
+			}
+		}
+		
+		effect = {
+			add_country_modifier = {
+				name = "eng_rb_thirteen_colonies_mod"
+				duration = -1
+			}
+		}
+	}
+	
+	rom_la_plata = {
+		icon = mission_trade_company_region_abroad
+		required_missions = { rom_carribean }
+		position = 12
+		
+		provinces_to_highlight = {
+			colonial_region = colonial_la_plata
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+			has_discovered = yes
+		}
+		
+		trigger = {
+			custom_trigger_tooltip = {
+				tooltip = spa_rb_la_plata.tooltip
+				num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
+					value = 5
+					colonial_region = colonial_la_plata
+					is_city = yes
+				}
+			}
+		}
+		
+		effect = {
+			add_country_modifier = {
+				name = "spa_rb_overseas_trade"
+				duration = 5475
+			}
+		}
+	}
+	
+	rom_incan_conquest = {
+		icon = mission_cannons_firing
+		required_missions = { rom_colombia }
+		position = 13
+		
+		provinces_to_highlight = {
+			OR = {
+				area = upper_peru
+				area = potosi_area
+				area = antisuyu_area
+				area = kuntisuyu_area
+				area = huanuco_area
+				area = cajamarca_area
+				area = quito_area
+				province_id = 2823
+				province_id = 2826
+				province_id = 812
+				province_id = 2821
+				province_id = 2822
+				province_id = 794
+				province_id = 2837
+			}
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+			has_discovered = yes
+		}
+		
+		trigger = {
+			NOT = {
+				exists = INC
+			}
+			upper_peru = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			potosi_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			antisuyu_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			kuntisuyu_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			huanuco_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			cajamarca_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			quito_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			2823 = {
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			2826 = {
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			812 = {
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			2821 = {
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			2822 = {
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			794 = {
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			2837 = {
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			
+		}
+		
+		effect = {
+			add_treasury = 1500
+			colonial_peru = {
+				limit = {
+					NOT = { is_empty = yes }
+				}
+				add_province_modifier = {
+					name = spa_rb_culture_shift
+					duration = -1
+				}
+			}
+			quito_area = {
+				add_province_modifier = {
+					name = spa_rb_culture_shift
+					duration = -1
+				}
+			}
+			2837 = {
+				add_province_modifier = {
+					name = spa_rb_culture_shift
+					duration = -1
+				}
+			}
+			794 = {
+				add_province_modifier = {
+					name = spa_rb_culture_shift
+					duration = -1
+				}
+			}
+			795 = {
+				add_province_modifier = {
+					name = "spa_rb_gold_rush"
+					duration = 5475
+				}
+			}
+			2946 = {
+				add_province_modifier = {
+					name = "spa_rb_gold_rush"
+					duration = 5475
+				}
+			}
+			2941 = {
+				add_province_modifier = {
+					name = "spa_rb_gold_rush"
+					duration = 5475
+				}
+			}
+			804 = {
+				add_province_modifier = {
+					name = "spa_rb_gold_rush"
+					duration = 5475
+				}
+			}
+		}
+	}
+}
+
+rom_slot_four = {
+	slot = 4
+	generic = no
+	ai = yes
+	potential_on_load = {
+		has_dlc = "Purple Phoenix"
+	}
+	potential = {
+		OR = {
+            tag = BYZ
+            AND = {
+                tag = ROM
+                has_country_flag = BYZ_restored_rome
+            }
+        }
+		has_dlc = "Purple Phoenix"
+	}
+	has_country_shield = yes
+	
+	rom_greenland = {
+		icon = mission_rb_settle_the_north
+		required_missions = { }
+		position = 9
+		
+		provinces_to_highlight = {
+			area = greenland_area
+			NOT = { owned_by = ROOT }
+			has_discovered = ROOT
+		}
+		
+		ai_priority = {
+			factor = 2
+		}
+		
+		trigger = {
+			custom_trigger_tooltip = {
+				tooltip = miss_discover_greenland
+				greenland_area = {
+					has_discovered = ROOT
+				}
+			}
+			custom_trigger_tooltip = {
+				tooltip = miss_colonize_greenland
+				greenland_area = { 
+					type = all
+					owned_by = ROOT
+					is_city = yes
+				}
+			}
+		}
+		
+		effect = {
+			add_country_modifier = {
+				name = "eng_rb_colony_chance"
+				duration = 5475
+			}
+			1104 = {
+				add_base_production = 3
+				add_base_manpower = 3
+				custom_tooltip = eng_rb_greenland.tooltip
+				hidden_effect = {
+					random_list = {
+						48 = {
+							change_province_name = "Novum Novum Eboracum"
+						}
+						48 = {
+							change_province_name = "Pieter's Haven"
+						}
+						2 = {
+							change_province_name = "Winterfell"
+						}
+					}
+				}
+			}
+			1105 = {
+				add_base_production = 2
+				add_base_manpower = 2
+			}
+		}
+	
+	}
+	
+	rom_canada = {
+		icon = mission_rb_colonise_canada
+		required_missions = { rom_discover_america }
+		
+		provinces_to_highlight = {
+			colonial_region = colonial_canada
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+			has_discovered = ROOT
+		}
+		
+		ai_priority = {
+			factor = 2
+		}
+		
+		trigger = {
+			custom_trigger_tooltip = {
+				tooltip = miss_discover_canada
+				colonial_canada = {
+					has_discovered = ROOT
+				}
+			}
+			custom_trigger_tooltip = {
+				tooltip = miss_colonize_canada
+				num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
+					value = 5
+					colonial_region = colonial_canada
+					is_city = yes
+				}
+			}
+		}
+		
+		effect = {
+			add_country_modifier = {
+				name = "eng_rb_established_shipping"
+				duration = 7300
+			}
+		}
+	}
+	
+	rom_carribean = {
+		icon = mission_establish_high_seas_navy
+		required_missions = { rom_colony_in_north_america }
+		position = 11
+		
+		provinces_to_highlight = {
+			colonial_region = colonial_the_carribean
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+			has_discovered = yes
+		}
+		
+		trigger = {
+			custom_trigger_tooltip = {
+				tooltip = miss_colonize_caribbean
+				num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
+					value = 1
+					colonial_region = colonial_the_carribean
+				}
+			}
+		}
+		
+		effect = {
+			add_country_modifier = {
+				name = "colonial_enthusiasm"
+				duration = 7300
+			}
+		}
+	}
+	
+	rom_colombia = {
+		icon = mission_trade_company_region_abroad
+		required_missions = { rom_carribean }
+		
+		provinces_to_highlight = {
+			colonial_region = colonial_colombia
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+			has_discovered = yes
+		}
+		
+		trigger = {
+			custom_trigger_tooltip = {
+				tooltip = spa_rb_spanish_main.tooltip
+				num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
+					value = 5
+					colonial_region = colonial_colombia
+					is_city = yes
+				}
+			}
+		}
+		
+		effect = {
+			upper_peru = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { owned_by = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			potosi_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { owned_by = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			antisuyu_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { owned_by = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			kuntisuyu_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { owned_by = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			huanuco_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { owned_by = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			cajamarca_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { owned_by = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			quito_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { owned_by = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			794 = {
+				add_permanent_claim = ROOT
+			}
+			2837 = {
+				add_permanent_claim = ROOT
+			}
+			2823 = {
+				add_permanent_claim = ROOT
+			}
+			2826 = {
+				add_permanent_claim = ROOT
+			}
+			812 = {
+				add_permanent_claim = ROOT
+			}
+			2822 = {
+				add_permanent_claim = ROOT
+			}
+			2821 = {
+				add_permanent_claim = ROOT
+			}
+			guatemala_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { owned_by = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			east_yucatan_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { owned_by = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			yucatan_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { owned_by = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			chiapas_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { owned_by = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			oaxaca_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { owned_by = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			
+			eastern_mexico_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { owned_by = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			guerrero_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { owned_by = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			michoacan_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { owned_by = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			2657 = {
+				add_permanent_claim = ROOT
+			}
+			2621 = {
+				add_permanent_claim = ROOT
+			}
+			854 = {
+				add_permanent_claim = ROOT
+			}
+			2642 = {
+				add_permanent_claim = ROOT
+			}
+		}
+	}
+	
+	rom_mexico_conquest = {
+		icon = mission_conquer_50_development
+		required_missions = { rom_colombia }
+		
+		provinces_to_highlight = {
+			OR = {
+				area = mexico_area
+				owned_by = AZT
+				area = michoacan_area
+				owned_by = TAR
+			}
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+			has_discovered = yes
+		}
+			
+		trigger = {
+			NOT = {
+				exists = AZT 
+			}
+			mexico_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			NOT = {
+				exists = TAR
+			}
+			michoacan_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		
+		effect = {
+			add_treasury = 2000
+			colonial_mexico = {
+				limit = {
+					NOT = { is_empty = yes }
+				}
+				add_province_modifier = {
+					name = spa_rb_culture_shift
+					duration = -1
+				}
+			}
+			852 = {
+				add_province_modifier = {
+					name = "spa_rb_gold_rush"
+					duration = 5475
+				}
+			}
+			2626 = {
+				add_province_modifier = {
+					name = "spa_rb_gold_rush"
+					duration = 5475
+				}
+			}
+		}
+	}
+}
+
+rom_slot_five = {
+	slot = 5
+	generic = no
+	ai = yes
+	potential_on_load = {
+		has_dlc = "Purple Phoenix"
+	}
+	potential = {
+		OR = {
+            tag = BYZ
+            AND = {
+                tag = ROM
+                has_country_flag = BYZ_restored_rome
+            }
+        }
+		has_dlc = "Purple Phoenix"
+	}
+	has_country_shield = yes
+	
+	rom_conquer_pontic = {
+		icon = mission_non-western_cavalry_raid
+		required_missions = { recover_crimea }
+		position = 7
+		
+		provinces_to_highlight = {
+			region = crimea_region
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+		}
+		
+		trigger = {
+			crimea_region = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		effect = {
+			ural_region = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { owned_by = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			west_siberia_region = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { owned_by = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			central_asia_region = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { owned_by = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+		}
+	}
+	
+	rom_colonise_west_africa = {
+		icon = mission_colonial
+		required_missions = { }
+		position = 9
+		
+		provinces_to_highlight = {
+			region = guinea_region
+			NOT = { owned_by = ROOT }
+			has_discovered = ROOT
+		}
+		
+		trigger = { 
+			custom_trigger_tooltip = {
+				tooltip = miss_colonize_west_africa
+				guinea_region = {
+					owned_by = ROOT
+					is_city = yes
+				}
+			}
+		}
+	
+		effect = {
+			create_explorer = 60
+			add_dip_power = 60
+			niger_region = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { owned_by = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+		}
+	}
+	
+	rom_colonise_central_africa = {
+		icon = mission_trade_company_region_abroad
+		required_missions = { rom_colonise_west_africa }
+		
+		provinces_to_highlight = {
+			region = kongo_region
+			NOT = { owned_by = ROOT }
+			has_discovered = ROOT
+		}
+		
+		trigger = { 
+			custom_trigger_tooltip = {
+				tooltip = miss_discover_kongo
+				kongo_region = {
+					has_discovered = ROOT
+				}
+			}
+			custom_trigger_tooltip = {	
+				tooltip = miss_colonize_kongo
+				kongo_region = {
+					owned_by = ROOT
+					is_city = yes
+				}
+			}
+		}
+	
+		effect = {
+			hidden_effect = {
+				4097 = {
+					discover_country = ROOT
+				}
+			}
+			4097 = {
+				add_trade_modifier = {
+					who = root
+					duration = 5475
+					power = 20
+					key = ivory_coast_ambition
+				}
+			}
+			central_africa_region = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { owned_by = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+		}
+	}
+	
+	rom_colonise_cape_hope = {
+		icon = mission_sea_battles
+		required_missions = { rom_colonise_central_africa }
+		
+		provinces_to_highlight = {
+			area = cape_of_good_hope_area
+			NOT = { owned_by = ROOT }
+			has_discovered = ROOT
+		}
+		
+		trigger = { 
+			custom_trigger_tooltip = {
+				cape_of_good_hope_area = {
+					has_discovered = ROOT
+				}
+			}
+			custom_trigger_tooltip = {	
+				cape_of_good_hope_area = {
+					owned_by = ROOT
+					is_city = yes
+				}
+			}
+		}
+		
+		trigger = { 
+			cape_of_good_hope_area = {
+				type = all
+				owned_by = root
+			}
+		}
+	
+		effect = {
+			add_country_modifier = {
+				name = "por_ivory_gains"
+				duration = 5475
+			}
+			south_africa_region = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { owned_by = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+		}
+	}
+	
+	rom_brazil = {
+		icon = mission_trade_company_region_abroad
+		required_missions = { rom_carribean }
+		position = 12
+		
+		provinces_to_highlight = {
+			colonial_region = colonial_brazil
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+			has_discovered = ROOT
+		}
+		
+		trigger = { 
+			custom_trigger_tooltip = {
+				tooltip = por_establishes_foothold_brazil.tooltip
+				num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
+					value = 10
+					colonial_region = colonial_brazil
+					is_city = yes
+				}
+			}
+		}
+		
+		effect = {
+			add_country_modifier = {
+				name = "por_brazil_colonial"
+				duration = 5475
+			}
+		}
+	}
+}

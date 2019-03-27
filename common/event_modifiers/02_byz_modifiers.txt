@@ -1,0 +1,29 @@
+old_borders_reclaimed = {
+    prestige = 5
+    global_unrest = -3
+    core_creation = -0.1
+    global_autonomy = -0.1
+}
+
+roman_rivalry = {
+	prestige = -10
+}
+
+true_roman_emperor = {
+	diplomatic_reputation = 2
+	diplomatic_upkeep = 1
+	prestige_decay = -0.01
+}
+
+roman_diplo_rivalry = {
+	prestige = -1
+	diplomatic_upkeep = 1
+}
+
+mercury_swiftness = {
+    movement_speed = 0.15
+}
+
+byzantine_roots = {
+    num_accepted_cultures = 7
+}
